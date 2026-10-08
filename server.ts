@@ -351,10 +351,11 @@ async function startServer() {
   });
 
   // --- Vite Dev Integration & Production Static Serving ---
-  const isProd = process.env.NODE_ENV === 'production';
+  const isProd = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
   const distPath = path.resolve(__dirname, 'dist');
+  const hasDist = fs.existsSync(path.resolve(distPath, 'index.html'));
 
-  if (isProd && fs.existsSync(distPath)) {
+  if (isProd && hasDist) {
     app.use(express.static(distPath));
     app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.resolve(distPath, 'index.html'));
@@ -364,7 +365,8 @@ async function startServer() {
       server: {
         middlewareMode: true,
         host: '0.0.0.0',
-        port: PORT
+        port: PORT,
+        allowedHosts: true
       },
       appType: 'spa'
     });
