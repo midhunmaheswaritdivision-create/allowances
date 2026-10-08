@@ -1,0 +1,6 @@
+{
+  "name": "Depot Report Audit Generator",
+  "description": "Upload, parse, and audit depot allowance and ticket report files. Displays interactive dashboards, highlights amount discrepancies, and generates formatted Excel reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

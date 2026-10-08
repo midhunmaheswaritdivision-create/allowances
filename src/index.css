@@ -1,0 +1,122 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-slate-900 bg-slate-50;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spectrumFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-spectrum {
+  background-size: 200% 200%;
+  animation: spectrumFlow 8s ease infinite;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+  outline: none;
+}
+
+@keyframes gradientBg4 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-4-color {
+  background: linear-gradient(-45deg, #a5b4fc, #f9a8d4, #86efac, #7dd3fc); /* 4 distinct pastel colors: Indigo-100, Pink-100, Green-100, Sky-100 */
+  background-size: 400% 400%;
+  animation: gradientBg4 15s ease infinite;
+}
+
+.glass-button-primary {
+  background: rgba(99, 102, 241, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.2);
+  transition: all 0.2s ease;
+}
+
+.glass-button-primary:hover {
+  background: rgba(99, 102, 241, 0.95);
+  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.35);
+}
+
+.spectrum-border {
+  position: relative;
+  border-radius: inherit;
+}
+
+.spectrum-border::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(to right, #ff4d4d, #ff9933, #e6b800, #33cc66, #3399ff, #6666ff, #b359ff, #ff4d94);
+  background-size: 200% 200%;
+  animation: spectrumFlow 5s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
